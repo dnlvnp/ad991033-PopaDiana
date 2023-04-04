@@ -27,7 +27,7 @@ Ouvrez un terminal à la racine du projet
 
 Lancez :
 
-_\`cd Installation && sudo chmod -R 777 ../Laboratoires/Lab7/ && sudo docker compose up -d\`_
+_\`cd Installation && sudo docker compose up -d && sudo chmod -R 777 ../Laboratoires/Lab7/geoserverData`_
 
 ![](https://lh5.googleusercontent.com/_G312KCKFjuYv2g0txYJf2uBIonJRMUcqncIOcCG_v7uYMsnDsUn9ayzNiKxeEkNa_KR2yYsavtW-s1P7ZgVA4KuHxyy7bd0eY8YEWa37fHP968D-VC9GjSbQhke4_yWKdWGYr0eqwZp6xBFF6BcBDw)
 
