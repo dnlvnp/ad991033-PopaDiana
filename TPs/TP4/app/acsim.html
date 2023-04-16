@@ -25,32 +25,19 @@
 
   <body>
 
-    <!--AJout de la variable map pour y insérer la carte-->
-    <div id="map"></div>
+    <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+      <p><a class="navbar-brand" href="#"><h2>Solicitation du Service de sécurité d'incendie de Montréal dans les actes criminels depuis 2015</h2></a></p>
+    
+      <p><h6><a href="https://experience.arcgis.com/experience/2ad4b0073ffb424281188c066575c78a/"><em>Consulter la version ESRI.</em></a></h6></p>
+    
+    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="./index.html">Accueil<span class="sr-only">(current)</span></a>
+        </li>
 
-    <div id="menu">
-      <div id="boite">
-
-      <!--Mise en forme de la barre de navigation-->
-      <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
-        <p><a class="navbar-brand" href="#"><h1>Solicitation du Service de sécurité d'incendie de Montréal dans les actes criminels depuis 2015</h2></a></p>
-      
-        <p><h6><a href="https://experience.arcgis.com/experience/2ad4b0073ffb424281188c066575c78a/"><em>Consulter la version ESRI.</em></a></h6></p>
-      
-      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="./index.html">Accueil<span class="sr-only">(current)</span></a>
-          </li>
-      </div>  
-         
     </div>
-  </div>
-
-      <div id=bouton1>
-        <button id=zoomto>Zoom to layer</button>
-      </div>
-
+    
      <!-- Bootstrap core JavaScript -->
      <!-- ================================================== -->
      <!-- Placed at the end of the document so the pages load faster -->
@@ -67,9 +54,8 @@
 
     <!-- ================================================== -->
 
+    <script type='text/javascript' src="./app.js"></script>
+    <script type='text/javascript' src="./modules/acsim.js"></script>
   </body>
-
-  <script type='text/javascript' src="./app.js"></script>
-  <script type='text/javascript' src="./modules/acsim.js"></script>
 
 </html>
