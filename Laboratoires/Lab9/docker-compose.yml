@@ -5,4 +5,4 @@ services:
     ports:
       - 8000:80
     volumes:
-      - ./:/usr/share/nginx/html     
+      - ./TPs/TP4/:/usr/share/nginx/html     
