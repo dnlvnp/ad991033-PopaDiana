@@ -7,46 +7,61 @@ var map = new maplibregl.Map({
   hash: true // activation du hash pour la gestion de l'historique de la carte
 });
 
-//Declaration de la variable geoJSON pour faciliter le fonctionnement des traitements qui vont suivre.
-//Par consequent, les fichiers geoJSON seront lisibles par les fonctions.
-//var geoJSONcontent
-
-//Declaration de la variable qui permettra que les navigateurs puissent lire les fichiers.
-var reader = new FileReader();
-
-//Fonction declarant la variable que contiendra le fichier
-function handleFileSelect(evt) {
-  var file = evt.target.files[0];
-
-  reader.onload = function (theFile) {
-
-    //geoJSONcontent = JSON.parse(theFile.target.result);
+//Ajout des contrôles de zoom
+var nav = new maplibregl.NavigationControl({
+  showCompass: true, //Boussole
+  showZoom: true, //Boutons de zoom
+  visualizePitch: true //Angle d'inclinaison (surtout pertinent pour les bâtiments 2.5D)
+});
+map.addControl(nav, 'top-right'); //Position : haut-droite
 
 
-    var scale = new maplibregl.ScaleControl({
-      maxWidth: 80,
-      unit: 'metric'
+// Ajout du contrôle d'échelle dynamique
+var scale = new maplibregl.ScaleControl({
+  unit: 'metric' // Unité: métrique
+});
+map.addControl(scale, 'bottom-left'); //Position : bas-gauche
+
+map.on("load", () => {
+
+  //Ajout des couches WFS
+  //1.  Territoires administratifs des casernes de Montréal
+  map.addSource('casernes', {
+    'type': 'geojson',
+    'data': 'https://services6.arcgis.com/133a00biU9FItiqJ/arcgis/rest/services/territoires_administratifs_casernes/FeatureServer/0/query?f=pgeojson&where=1=1&outFields=*',
+  }),
+
+    map.addLayer({
+      'id': 'casernes',
+      'type': 'fill',
+      'source': 'casernes'
     });
-    map.addControl(scale);
 
-    scale.setUnit('metric');
+  //2. Unités d'évaluation foncière
+  map.addSource('batiments', {
+    'type': 'geojson',
+    'data': 'https://services6.arcgis.com/133a00biU9FItiqJ/arcgis/rest/services/batiments3D/FeatureServer/0/query?f=pgeojson&where=1=1&outFields=*',
+  }),
 
+    map.addLayer({
+      'id': 'batiments',
+      'type': 'fill',
+      'source': 'batiments'
+    });
 
-    //Ajout des sources geoJSON
-    //map.addSource('acsim', {
-    // 'type': 'geojson',
-    //  'data' : 'https://services6.arcgis.com/133a00biU9FItiqJ/arcgis/rest/services/ac_sim/FeatureServer/0/query?f=pgeojson&where=1=1&outFields=*',
-    //}),
+  //3. Interventions du SIM dans les crimes
+  map.addSource('acsim', {
+    'type': 'geojson',
+    'data': 'https://services6.arcgis.com/133a00biU9FItiqJ/arcgis/rest/services/ac_sim/FeatureServer/0/query?f=pgeojson&where=1=1&outFields=*',
+  }),
 
-    //  map.addLayer({
-    //    'id': 'acsim',
-    //    'type': 'circle',
-    //    'source': 'acsim-source'
-    // });
-  };
+    map.addLayer({
+      'id': 'acsim',
+      'type': 'circle',
+      'source': 'acsim'
+    });
+});
 
-  reader.readAsText(file, 'UTF-8');
-}
 // Declaration de la fonction qui permettra de zoomer sur les fichiers geoJSON
 function zoomToGeoJSON() {
   map.fitBounds(geojsonExtent(geoJSONcontent));

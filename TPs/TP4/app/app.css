@@ -6,9 +6,9 @@ body {
 
   #map {
     position: absolute;
+    top : 100px;
     bottom: 0;
     width: 80%;
-    height: 91.25%;
   }
 
   #titre {
