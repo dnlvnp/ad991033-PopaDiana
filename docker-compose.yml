@@ -1,4 +1,4 @@
-version: "3.4"
+docker version: "3.4"
 services:
   pg:
     image: "postgis/postgis:14-3.3"
