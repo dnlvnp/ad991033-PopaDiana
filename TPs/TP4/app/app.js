@@ -2,10 +2,16 @@
 var map = new maplibregl.Map({
   container: 'map',
   style: 'https://api.maptiler.com/maps/streets/style.json?key=JhO9AmIPH59xnAn5GiSj', //Url de la carte
-  center: [-73.55, 45.55], // position centrale de l'ile de Montreal
-  zoom: 9, // niveau de zoom initial
+  center: [-73.6269, 45.5591], // position centrale de l'ile de Montreal
+  zoom: 9.5, // niveau de zoom initial
   hash: true // activation du hash pour la gestion de l'historique de la carte
 });
+
+// Ajout du contrôle d'échelle dynamique
+var scale = new maplibregl.ScaleControl({
+  unit: 'metric' // Unité: métrique
+});
+map.addControl(scale, 'bottom-left'); //Position : bas-gauche
 
 //Ajout des contrôles de zoom
 var nav = new maplibregl.NavigationControl({
@@ -13,14 +19,7 @@ var nav = new maplibregl.NavigationControl({
   showZoom: true, //Boutons de zoom
   visualizePitch: true //Angle d'inclinaison (surtout pertinent pour les bâtiments 2.5D)
 });
-map.addControl(nav, 'top-right'); //Position : haut-droite
-
-
-// Ajout du contrôle d'échelle dynamique
-var scale = new maplibregl.ScaleControl({
-  unit: 'metric' // Unité: métrique
-});
-map.addControl(scale, 'bottom-left'); //Position : bas-gauche
+map.addControl(nav, 'bottom-left'); //Position : bas-gauche
 
 map.on("load", () => {
 
@@ -66,6 +65,8 @@ map.on("load", () => {
 function zoomToGeoJSON() {
   map.fitBounds(geojsonExtent(geoJSONcontent));
 }
+
+
 
 
 //document

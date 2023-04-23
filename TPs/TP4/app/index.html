@@ -20,54 +20,89 @@
     integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
     crossorigin="anonymous"></script>
   <script src="https://unpkg.com/maplibre-gl@2.4.0/dist/maplibre-gl.js"></script>
-
 </head>
 
 <body>
-  <div id="menu">
-    <div id="boite">
-      
-      <!--Mise en forme de la barre de navigation-->
-      <nav class="navbar navbar-light" style="background-color: #86ccfa;">
-        <p><a class="navbar-brand">
-            <h1 id="titre">SOLICITATION DU SERVICE DE SÉCURITÉ INCENDIE DE MONTRÉAL (SIM) DANS LES INTERVENTIONS CRIMINELLES DEPUIS 2015</h1>
-          </a></p>
-        <p>
-        <h6><a href="https://experience.arcgis.com/experience/2ad4b0073ffb424281188c066575c78a/"><em>Consulter la
-              version ESRI.</em></a></h6>
-        </p>
-        </div>
-      </nav>
-    </div>
-  </div>
-
-
-  <!--AJout de la variable map pour y insérer et configurer la carte-->
+  <!--Ajout de la variable map pour y insérer et configurer la carte-->
   <div id="map"></div>
+
+  <!--Ajout d'un conteneur qui placera tous les éléments par-dessus la carte-->
   <main role="main" class="container">
 
-  <div id=bouton1>
-    <button type="button" class="btn btn-outline-primary"></button>
-  </div>
+    <div id="menu">
+      <div id="boite">
 
-  <!-- Bootstrap core JavaScript -->
-  <!-- ================================================== -->
-  <!-- Placed at the end of the document so the pages load faster -->
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-    crossorigin="anonymous"></script>
+        <!--Mise en forme de la barre de navigation-->
+        <nav class="navbar navbar-light" style="background-color: #86ccfa;">
+          <p><a class="navbar-brand">
+              <h1 id="titre">SOLICITATION DU SERVICE DE SÉCURITÉ INCENDIE DE MONTRÉAL (SIM) DANS LES INTERVENTIONS
+                CRIMINELLES DEPUIS 2015</h1>
+            </a></p>
+           <!--<p>
+          <h6><a href="https://experience.arcgis.com/experience/2ad4b0073ffb424281188c066575c78a/"><em>Consulter la
+                version ESRI.</em></a></h6>
+          </p>-->
+      </div>
+      </nav>
+    </div>
+
+    <!--Ajout d'une série de boutons Bootsrapt pour animer les interventions du SIM annuellement-->
+    <div class="btn-group" role="group" aria-label="Basic example">
+      <div id=bouton1><button type="button" class="btn btn-dark">2015</button></div>
+        <div id=bouton2><button type="button" class="btn btn-dark">2016</button></div>
+          <div id=bouton3><button type="button" class="btn btn-dark">2017</button></div>
+            <div id=bouton4><button type="button" class="btn btn-dark">2018</button></div>
+              <div id=bouton5><button type="button" class="btn btn-dark">2019</button></div>
+                <div id=bouton6><button type="button" class="btn btn-dark">2020</button></div>
+                  <div id=bouton7><button type="button" class="btn btn-dark">2021</button></div>
+                    <div id=bouton8><button type="button" class="btn btn-dark">2022</button></div>
+                      <div id=bouton9><button type="button" class="btn btn-dark">2023</button></div>
+    </div>
+
+    <label id="type1" class="switch1">
+      <input type="checkbox">
+      <span class="slider round">Vols qualifiés</span>
+    </label>
+    <label id="type2" class="switch2">
+      <input type="checkbox">
+      <span class="slider round">Vols de véhicule à moteur</span>
+    </label>
+    <label id="type3" class="switch3">
+      <input type="checkbox">
+      <span class="slider round">Vols dans/sur véhicule à moteur</span>
+    </label>
+    <label id="type4" class="switch4">
+      <input type="checkbox">
+      <span class="slider round">Méfait</span>
+    </label>
+    <label id="type5 "class="switch5">
+      <input type="checkbox">
+      <span class="slider round">Introduction</span>
+    </label>
+    <label id="type6" class="switch6">
+      <input type="checkbox">
+      <span class="slider round">Infraction entrainant la mort</span>
+    </label>
+
+    <!-- Bootstrap core JavaScript -->
+    <!-- ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"></script>
 
 
-  <!-- ================================================== -->
-  <script type='text/javascript' src="https://cdnjs.cloudflare.com/ajax/libs/Turf.js/6.5.0/turf.min.js"></script>
-  <link href='https://watergis.github.io/maplibre-gl-legend/maplibre-gl-legend.css' rel='stylesheet' />
-  <script src="https://watergis.github.io/maplibre-gl-legend/maplibre-gl-legend.js"></script>
-  <!-- ================================================== -->
+    <!-- ================================================== -->
+    <script type='text/javascript' src="https://cdnjs.cloudflare.com/ajax/libs/Turf.js/6.5.0/turf.min.js"></script>
+    <link href='https://watergis.github.io/maplibre-gl-legend/maplibre-gl-legend.css' rel='stylesheet' />
+    <script src="https://watergis.github.io/maplibre-gl-legend/maplibre-gl-legend.js"></script>
+    <!-- ================================================== -->
 
-  <!-- ================================================== -->
+    <!-- ================================================== -->
 
 </body>
 
 <script type='text/javascript' src="./app.js"></script>
+<script type='text/javascript' src="./histogramme.js"></script>
 
 </html>
