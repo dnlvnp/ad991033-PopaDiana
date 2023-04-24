@@ -46,20 +46,36 @@
       </nav>
     </div>
 
-    <!--Ajout d'une série de boutons Bootsrapt pour animer les interventions du SIM annuellement-->
+    <!--Ajout d'une série de boutons Bootstrap pour animer les interventions du SIM annuellement-->
     <div class="btn-group" role="group" aria-label="Basic example">
-      <div id=bouton1><button type="button" class="btn btn-dark">2015</button></div>
-        <div id=bouton2><button type="button" class="btn btn-dark">2016</button></div>
-          <div id=bouton3><button type="button" class="btn btn-dark">2017</button></div>
-            <div id=bouton4><button type="button" class="btn btn-dark">2018</button></div>
-              <div id=bouton5><button type="button" class="btn btn-dark">2019</button></div>
-                <div id=bouton6><button type="button" class="btn btn-dark">2020</button></div>
-                  <div id=bouton7><button type="button" class="btn btn-dark">2021</button></div>
-                    <div id=bouton8><button type="button" class="btn btn-dark">2022</button></div>
-                      <div id=bouton9><button type="button" class="btn btn-dark">2023</button></div>
+      <div id=bouton1><button type="button" class="btn btn-outline-secondary">2015</button></div>
+        <div id=bouton2><button type="button" class="btn btn-outline-secondary">2016</button></div>
+          <div id=bouton3><button type="button" class="btn btn-outline-secondary">2017</button></div>
+            <div id=bouton4><button type="button" class="btn btn-outline-secondary">2018</button></div>
+              <div id=bouton5><button type="button" class="btn btn-outline-secondary">2019</button></div>
+                <div id=bouton6><button type="button" class="btn btn-outline-secondary">2020</button></div>
+                  <div id=bouton7><button type="button" class="btn btn-outline-secondary">2021</button></div>
+                    <div id=bouton8><button type="button" class="btn btn-outline-secondary">2022</button></div>
+                      <div id=bouton9><button type="button" class="btn btn-outline-secondary">2023</button></div>
     </div>
 
-<!--Ajout d'une série de cases à cocher permettant de filtrer les différents types d'interventions-->
+    <!--Ajout d'une barre de navigation "input" permettant de filtrer les différents types d'interventions-->
+    <div class="input-group mb-3">
+      <!--<div class="input-group-prepend">
+        <label class="input-group-text" for="inputGroupSelect01">Type d'intervention</label>
+      </div>-->
+      <select class="custom-select" id="inputGroupSelect01">
+        <option selected>Filtrez en fonction des types d'intervention du SIM</option>
+        <option value="1">Vols qualifiés</option>
+        <option value="2">Vols de véhicule à moteur</option>
+        <option value="3">Vols dans/sur véhicule à moteur</option>
+        <option value="4">Méfait</option>
+        <option value="5">Introduction</option>
+        <option value="6">Infraction entrainant la mort</option>
+      </select>
+    </div>
+
+<!--Ajout d'une série de cases à cocher permettant de filtrer les différents types d'interventions
     <label id="type1" class="switch1">
       <input type="checkbox">
       <span class="slider round">Vols qualifiés</span>
@@ -83,7 +99,12 @@
     <label id="type6" class="switch6">
       <input type="checkbox">
       <span class="slider round">Infraction entrainant la mort</span>
-    </label>
+    </label>-->
+
+    <!--Ajout du bouton permettant de visualiser les bâtiments en 2.5D-->
+    <div id=bouton1>
+      <button id="generate3D" class="btn btn-outline-secondary">Affichez les unités d'évaluation foncière en 2.5D</button>
+    </div>
 
     <!-- Bootstrap core JavaScript -->
     <!-- ================================================== -->
@@ -101,9 +122,16 @@
 
     <!-- ================================================== -->
 
+<script type='text/javascript' src="./app.js"></script>
+<script type='text/javascript' src="./acsim2015.js"></script>
+<script type='text/javascript' src="./batiments3D.js"></script>
+<script type='text/javascript' src="./histogramme.js"></script>
+
 </body>
 
-<script type='text/javascript' src="./app.js"></script>
-<script type='text/javascript' src="./histogramme.js"></script>
+<!--<script type='text/javascript' src="./app.js"></script>
+<script type='text/javascript' src="./acsim2015.js"></script>
+<script type='text/javascript' src="./batiments3D.js"></script>
+<script type='text/javascript' src="./histogramme.js"></script>-->
 
 </html>

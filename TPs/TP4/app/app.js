@@ -21,8 +21,20 @@ var nav = new maplibregl.NavigationControl({
 });
 map.addControl(nav, 'bottom-left'); //Position : bas-gauche
 
-map.on("load", () => {
+//Déclaration des couches 
+const myLayers = ['batiments3D', 'acsim', 'casernes']
 
+// Cette fonction est appelée lorsque la carte est chargée.
+map.on('load', function () {
+    // Ajout de la légende : position bas-droite.
+    map.addControl(new MaplibreLegendControl({ 
+        batiments3D: 'batiments3D', 
+        acsim: 'acsim',
+        casernes: 'casernes',
+    }, { onlyRendered: true }), "bottom-right");
+});
+
+map.on("load", () => {
   //Ajout des couches WFS
   //1.  Territoires administratifs des casernes de Montréal
   map.addSource('casernes', {
@@ -42,15 +54,15 @@ map.on("load", () => {
     });
 
 //2. Unités d'évaluation foncière
-map.addSource('batiments', {
+map.addSource('batiments3D', {
   'type': 'geojson',
   'data': 'https://services6.arcgis.com/133a00biU9FItiqJ/arcgis/rest/services/batiments3D/FeatureServer/0/query?f=pgeojson&where=1=1&outFields=*',
 }),
 
   map.addLayer({
-    'id': 'batiments',
+    'id': 'batiments3D',
     'type': 'fill',
-    'source': 'batiments',
+    'source': 'batiments3D',
     'paint': {
       'fill-color': [
         'match',
@@ -87,6 +99,7 @@ map.addSource('batiments', {
         'OTHER', '#4c5c68',
         '#FFFFFF',
       ],
+      'fill-opacity': 0.5,
     }
   });
 
@@ -104,12 +117,12 @@ map.addSource('acsim', {
       'circle-color': [
         'match',
         ['get', 'crimes_cat'],
-        'Vols qualifiés', '#c89f9c',
-        'Vol de véhicule à moteur', '#b23a48',
-        'Vol dans / sur véhicule à moteur', '#8c2f39',
-        'Introduction', '#fed0bb',
-        'Méfait', '#461220',
-        'Infractions entrainant la mort', '#000000',
+        'Vols qualifiés', '#ffef9f',
+        'Vol de véhicule à moteur', '#ffac81',
+        'Vol dans / sur véhicule à moteur', '#b79ced',
+        'Introduction', '#ffd6e0',
+        'Méfait', '#99c1de',
+        'Infractions entrainant la mort', '#ee6055',
         '#FFFFFF',
       ],
       'circle-radius': 7,
