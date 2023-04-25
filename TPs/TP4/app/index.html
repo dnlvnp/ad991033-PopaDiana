@@ -9,13 +9,17 @@
   <title>GEO7630 : Travail pratique 4</title>
   <link rel="stylesheet" type="text/css" href="https://unpkg.com/maplibre-gl@2.4.0/dist/maplibre-gl.css" />
   <link rel="stylesheet" type="text/css" href="./app.css" />
+  <link rel="stylesheet" href="#" type="text/html" >
+  <!-- Ajout du type="text/html" car l'erreur suivante a été générée à plusieurs reprises :
+  Refused to execute script from '<URL>' because its MIME type ('text/html') is not executable, and strict MIME type checking is enabled.-->
   <meta name='viewport' content='width=device-width, initial-scale=1' />
   <script src='https://api.mapbox.com/mapbox-gl-js/v2.13.0/mapbox-gl.js'></script>
   <link href='https://api.mapbox.com/mapbox-gl-js/v2.13.0/mapbox-gl.css' rel='stylesheet' />
-
   <!-- Bootstrap core CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <!-- Lien au document app.css -->
+  <link href="./app.css">
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
     integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
     crossorigin="anonymous"></script>
@@ -29,41 +33,34 @@
   <!--Ajout d'un conteneur qui placera tous les éléments par-dessus la carte-->
   <main role="main" class="container">
 
+      <!--Ajout d'une section menu qui facilitera la mise en forme de la barre de navigation et titre-->
     <div id="menu">
-      <div id="boite">
-
-        <!--Mise en forme de la barre de navigation-->
+        <!--Mise en forme de la barre de navigation et titre-->
         <nav class="navbar navbar-light" style="background-color: #6B705Cd0;">
           <p><a class="navbar-brand">
               <h1 id="titre">SOLICITATION DU SERVICE DE SÉCURITÉ INCENDIE DE MONTRÉAL (SIM) DANS LES INTERVENTIONS
                 CRIMINELLES DEPUIS 2015</h1>
             </a></p>
-           <!--<p>
-          <h6><a href="https://experience.arcgis.com/experience/2ad4b0073ffb424281188c066575c78a/"><em>Consulter la
-                version ESRI.</em></a></h6>
-          </p>-->
       </div>
       </nav>
     </div>
 
+    
     <!--Ajout d'une série de boutons Bootstrap pour animer les interventions du SIM annuellement-->
     <div class="btn-group" role="group" aria-label="Basic example">
-      <div id=bouton1><button type="button" class="btn btn-outline-secondary">2015</button></div>
-        <div id=bouton2><button type="button" class="btn btn-outline-secondary">2016</button></div>
-          <div id=bouton3><button type="button" class="btn btn-outline-secondary">2017</button></div>
-            <div id=bouton4><button type="button" class="btn btn-outline-secondary">2018</button></div>
-              <div id=bouton5><button type="button" class="btn btn-outline-secondary">2019</button></div>
-                <div id=bouton6><button type="button" class="btn btn-outline-secondary">2020</button></div>
-                  <div id=bouton7><button type="button" class="btn btn-outline-secondary">2021</button></div>
-                    <div id=bouton8><button type="button" class="btn btn-outline-secondary">2022</button></div>
-                      <div id=bouton9><button type="button" class="btn btn-outline-secondary">2023</button></div>
+      <div id="acsim2015"><button type="button" class="btn btn-outline-secondary">2015</button></div>
+      <div id="acsim2016"><button type="button" class="btn btn-outline-secondary">2016</button></div>
+      <div id="acsim2017"><button type="button" class="btn btn-outline-secondary">2017</button></div>
+      <div id="acsim2018"><button type="button" class="btn btn-outline-secondary">2018</button></div>
+      <div id="acsim2019"><button type="button" class="btn btn-outline-secondary">2019</button></div>
+      <div id="acsim2020"><button type="button" class="btn btn-outline-secondary">2020</button></div>
+      <div id="acsim2021"><button type="button" class="btn btn-outline-secondary">2021</button></div>
+      <div id="acsim2022"><button type="button" class="btn btn-outline-secondary">2022</button></div>
+      <div id="acsim2023"><button type="button" class="btn btn-outline-secondary">2023</button></div>
     </div>
 
     <!--Ajout d'une barre de navigation "input" permettant de filtrer les différents types d'interventions-->
     <div class="input-group mb-3">
-      <!--<div class="input-group-prepend">
-        <label class="input-group-text" for="inputGroupSelect01">Type d'intervention</label>
-      </div>-->
       <select class="custom-select" id="inputGroupSelect01">
         <option selected>Filtrez en fonction des types d'intervention du SIM</option>
         <option value="1">Vols qualifiés</option>
@@ -75,44 +72,28 @@
       </select>
     </div>
 
-<!--Ajout d'une série de cases à cocher permettant de filtrer les différents types d'interventions
-    <label id="type1" class="switch1">
-      <input type="checkbox">
-      <span class="slider round">Vols qualifiés</span>
-    </label>
-    <label id="type2" class="switch2">
-      <input type="checkbox">
-      <span class="slider round">Vols de véhicule à moteur</span>
-    </label>
-    <label id="type3" class="switch3">
-      <input type="checkbox">
-      <span class="slider round">Vols dans/sur véhicule à moteur</span>
-    </label>
-    <label id="type4" class="switch4">
-      <input type="checkbox">
-      <span class="slider round">Méfait</span>
-    </label>
-    <label id="type5 "class="switch5">
-      <input type="checkbox">
-      <span class="slider round">Introduction</span>
-    </label>
-    <label id="type6" class="switch6">
-      <input type="checkbox">
-      <span class="slider round">Infraction entrainant la mort</span>
-    </label>-->
-
     <!--Ajout du bouton permettant de visualiser les bâtiments en 2.5D-->
     <div id=bouton1>
       <button id="generate3D" class="btn btn-outline-secondary">Affichez les unités d'évaluation foncière en 2.5D</button>
     </div>
 
+    <!--Ajout du bouton calculant un compte dynamique du total à l'écran pour les interventions SIM-->
+    <div id="boite">
+      <div class="input-group input-group-sm mb-3">
+        <div class="input-group-prepend">
+          <span class="btn btn-outline-secondary" id="inputGroup-sizing-sm">Total d'interventions à l'écran</span>
+        </div>
+        <input id="featureCount" disabled placeholder="" type="text" class="form-control" aria-label="Small"
+          aria-describedby="inputGroup-sizing-sm">
+      </div>
+    </div>
+    
     <!-- Bootstrap core JavaScript -->
     <!-- ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
       integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
       crossorigin="anonymous"></script>
-
 
     <!-- ================================================== -->
     <script type='text/javascript' src="https://cdnjs.cloudflare.com/ajax/libs/Turf.js/6.5.0/turf.min.js"></script>
@@ -121,17 +102,20 @@
     <!-- ================================================== -->
 
     <!-- ================================================== -->
-
-<script type='text/javascript' src="./app.js"></script>
-<script type='text/javascript' src="./acsim2015.js"></script>
-<script type='text/javascript' src="./batiments3D.js"></script>
-<script type='text/javascript' src="./histogramme.js"></script>
+    <script type='text/javascript' src="./app.js"></script>
+    <script type='text/javascript' src="./modules/acsim2015.js"></script>
+    <script type='text/javascript' src="./modules/acsim2016.js"></script>
+    <script type='text/javascript' src="./modules/acsim2017.js"></script>
+    <script type='text/javascript' src="./modules/acsim2018.js"></script>
+    <script type='text/javascript' src="./modules/acsim2019.js"></script>
+    <script type='text/javascript' src="./modules/acsim2020.js"></script>
+    <script type='text/javascript' src="./modules/acsim2021.js"></script>
+    <script type='text/javascript' src="./modules/acsim2022.js"></script>
+    <script type='text/javascript' src="./modules/acsim2023.js"></script>
+    <script type='text/javascript' src="./modules/batiments3D.js"></script>
+    <script type='text/javascript' src="./modules/comptedynamique.js"></script>
+   <!-- ================================================== -->
 
 </body>
-
-<!--<script type='text/javascript' src="./app.js"></script>
-<script type='text/javascript' src="./acsim2015.js"></script>
-<script type='text/javascript' src="./batiments3D.js"></script>
-<script type='text/javascript' src="./histogramme.js"></script>-->
 
 </html>

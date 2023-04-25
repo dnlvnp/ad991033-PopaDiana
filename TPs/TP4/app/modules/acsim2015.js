@@ -1,14 +1,19 @@
+function acsim2015(){
+  console.log('test')
+  removeAllLayersAndSources()
+}
+
 map.on("load", () => {
-  //3. Interventions du SIM dans les crimes
-  map.addSource('acsim', {
+  //Interventions du SIM dans les crimes : 2015
+  map.addSource('acsim2015', {
     'type': 'geojson',
     'data': 'https://services6.arcgis.com/133a00biU9FItiqJ/arcgis/rest/services/ac_sim2015/FeatureServer/0/query?f=pgeojson&where=1=1&outFields=*',
   }),
 
     map.addLayer({
-      'id': 'acsim',
+      'id': 'acsim2015',
       'type': 'circle',
-      'source': 'acsim',
+      'source': 'acsim2015',
       'paint': {
         'circle-color': [
           'match',
@@ -27,3 +32,8 @@ map.on("load", () => {
       }
     });
 });
+
+//Ajout d'un évènement pour relier le click à l'animation des données
+document
+    .getElementById('acsim2015')
+    .addEventListener('click', acsim2015);
