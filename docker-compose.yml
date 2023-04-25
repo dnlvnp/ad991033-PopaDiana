@@ -47,6 +47,6 @@ services:
     ports:
       - 8000:80
     volumes:
-      - ./TPs/TP4/:/usr/share/nginx/html
+      - ./Exam/Exam2/:/usr/share/nginx/html
 volumes:
   alexis:
