@@ -7,16 +7,16 @@ var map = new maplibregl.Map({
 });
 
 map.on('click', 'stationsBixi', function (e) {
-    var coordinates = _____________________________________ // Calcul des coordonnées du centre de la géométrie cliquée
+    var coordinates = turf.centroid(e.features[0]) // Calcul des coordonnées du centre de la géométrie cliquée
   
     // Création du contenu du popup
     var popupContent = '<h3>' + e.features[0].properties.route_name + '</h3>'; // Vous pouvez personnaliser le contenu du popup en fonction de vos besoins
   
     // Ajout du popup à la carte Maplibre
     new maplibregl.Popup()
-      .setLngLat(_________)
-      .setHTML(__________)
-      .addTo(_______);
+      .setLngLat(coordinates.geometry.coordinates)
+      .setHTML(description)
+      .addTo(map);
   });
 
 
@@ -24,7 +24,7 @@ map.on('click', 'stationsBixi', function (e) {
     const layers = map.getStyle().layers;
     layers.forEach((layer) => {
         if (layer.id == 'stationsBixi') {
-            _____________ // Appelez la fonction de votre module qui compte le nombre de points à l'ecran
+            featureCount // Appelez la fonction de votre module qui compte le nombre de points à l'ecran
         }        
     });
 });
